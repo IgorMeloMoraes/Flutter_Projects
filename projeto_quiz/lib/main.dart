@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 main() => runApp(QuizApp());
 
 // Classe que representa o estado do aplicativo
-class QuizAppState extends State<QuizApp> {
+class _QuizAppState extends State<QuizApp> {
   // variavel de controle de indece de pergunta
-  int perguntaIndex = 0;
+  int _perguntaIndex = 0;
 
   // Metodo para retornar uma ação quando o clickar no botão
-  void responder() {
+  void _responder() {
     setState(() {
-      perguntaIndex++;
+      _perguntaIndex++;
     });
-    print(perguntaIndex);
+    print(_perguntaIndex);
   }
 
   @override
@@ -29,10 +29,10 @@ class QuizAppState extends State<QuizApp> {
         appBar: AppBar(title: Text('Quiz App')),
         body: Column(
           children: [
-            Text(perguntas[perguntaIndex]),
-            ElevatedButton(onPressed: responder, child: Text('Resposta 1')),
-            ElevatedButton(onPressed: responder, child: Text('Resposta 2')),
-            ElevatedButton(onPressed: responder, child: Text('Resposta 3')),
+            Text(perguntas[_perguntaIndex]),
+            ElevatedButton(onPressed: _responder, child: Text('Resposta 1')),
+            ElevatedButton(onPressed: _responder, child: Text('Resposta 2')),
+            ElevatedButton(onPressed: _responder, child: Text('Resposta 3')),
           ],
         ),
       ),
@@ -43,5 +43,5 @@ class QuizAppState extends State<QuizApp> {
 // Classe principal do aplicativo
 class QuizApp extends StatefulWidget {
   @override
-  QuizAppState createState() => QuizAppState();
+  _QuizAppState createState() => _QuizAppState();
 }
