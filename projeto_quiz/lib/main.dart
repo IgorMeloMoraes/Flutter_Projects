@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 
 main() => runApp(QuizApp());
 
-class QuizApp extends StatelessWidget {
+// Classe que representa o estado do aplicativo
+class QuizAppState extends State<QuizApp> {
+  // variavel de controle de indece de pergunta
+  int perguntaIndex = 0;
+
+  // Metodo para retornar uma ação quando o clickar no botão
+  void responder() {
+    setState(() {
+      perguntaIndex++;
+    });
+    print(perguntaIndex);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // variavel de controle de indece de pergunta
-    int perguntaIndex = 0;
-
     // Lista de perguntas
     final List<String> perguntas = [
       'Qual é a capital da França?',
@@ -15,18 +24,12 @@ class QuizApp extends StatelessWidget {
       'Qual é a capital dos Estados Unidos?',
     ];
 
-    // Metodo para retornar uma ação quando o clickar no botão
-    void responder() {
-      perguntaIndex++;
-      print('pergunta respondida: $perguntaIndex');
-    }
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Quiz App')),
         body: Column(
           children: [
-            Text(perguntas[0]),
+            Text(perguntas[perguntaIndex]),
             ElevatedButton(onPressed: responder, child: Text('Resposta 1')),
             ElevatedButton(onPressed: responder, child: Text('Resposta 2')),
             ElevatedButton(onPressed: responder, child: Text('Resposta 3')),
@@ -35,4 +38,10 @@ class QuizApp extends StatelessWidget {
       ),
     );
   }
+}
+
+// Classe principal do aplicativo
+class QuizApp extends StatefulWidget {
+  @override
+  QuizAppState createState() => QuizAppState();
 }
