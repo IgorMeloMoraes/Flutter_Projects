@@ -11,6 +11,7 @@ class _QuizAppState extends State<QuizApp> {
 
   // Metodo para retornar uma ação quando o clickar no botão
   void _responder() {
+    // Verifica se ainda há perguntas disponíveis
     setState(() {
       _perguntaIndex++;
     });
@@ -41,6 +42,8 @@ class _QuizAppState extends State<QuizApp> {
         appBar: AppBar(title: Text('Quiz App')),
         body: Column(
           children: [
+            // Exibe a questão atual
+            // Utiliza a classe Questao para exibir o texto da pergunta
             Questao(perguntas[_perguntaIndex]['texto'] as String),
             Resposta(texto: 'Resposta 1', onPressed: _responder),
             Resposta(texto: 'Resposta 2', onPressed: _responder),
